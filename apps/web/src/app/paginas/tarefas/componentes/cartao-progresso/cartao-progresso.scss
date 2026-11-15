@@ -1,0 +1,13 @@
+.cartao {
+  background: var(--rosa-100); border-radius: 26px; padding: 24px;
+  display: flex; flex-direction: column; gap: 6px; position: relative; overflow: hidden;
+}
+.flor { position: absolute; right: -12px; top: -12px; opacity: .6; }
+p { margin: 0; color: var(--rosa-700); }
+.titulo { font-family: var(--fonte-titulo); font-size: 18px; font-weight: 500; }
+.numero { margin-top: 4px; font-family: var(--fonte-titulo); font-size: 44px; font-weight: 600; line-height: 1; }
+.de { font-size: 22px; }
+.texto { font-size: 14px; font-weight: 700; }
+.barra { margin-top: 12px; height: 12px; border-radius: 999px; background: #FFFFFF; overflow: hidden; }
+.barra-cheia { height: 100%; border-radius: 999px; background: var(--rosa-500); transition: width .3s; }
+.incentivo { margin-top: 8px; }

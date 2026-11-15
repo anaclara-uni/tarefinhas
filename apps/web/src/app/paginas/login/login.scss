@@ -1,0 +1,120 @@
+// Estilos da tela de login (valores copiados do design ref/paginas/login.html)
+
+.pagina {
+  min-height: 100vh;
+  background: var(--fundo);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+// ---------- Lado esquerdo ----------
+.boas-vindas {
+  flex: 1 1 420px;
+  min-width: 0;
+  background: var(--rosa-100);
+  border-radius: 36px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.flor-fundo { position: absolute; right: -50px; bottom: -40px; opacity: .7; }
+.brilho { position: absolute; }
+.brilho-1 { left: 52%; top: 120px; }
+.brilho-2 { left: 60%; top: 170px; }
+
+.marca { display: flex; align-items: center; gap: 12px; }
+.marca-icone {
+  width: 48px; height: 48px; border-radius: 16px; background: #FFFFFF;
+  display: flex; align-items: center; justify-content: center; color: var(--rosa-500);
+}
+.marca-nome { font-family: var(--fonte-titulo); font-size: 26px; font-weight: 600; color: var(--texto); }
+
+.chamada {
+  display: flex; flex-direction: column; gap: 16px; max-width: 520px; position: relative;
+  h1 { margin: 0; font-family: var(--fonte-titulo); font-size: 52px; line-height: 1.08; font-weight: 600; color: var(--texto); }
+  p { margin: 0; font-size: 18px; line-height: 1.5; color: #6E3A50; }
+}
+
+.exemplos { display: flex; flex-direction: column; gap: 12px; max-width: 380px; position: relative; }
+.exemplo {
+  background: #FFFFFF; border-radius: 20px; padding: 14px 18px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 10px 30px rgba(163, 38, 79, .10);
+}
+.exemplo-1 { transform: rotate(-2deg); }
+.exemplo-2 { margin-left: 32px; transform: rotate(1.5deg); }
+.exemplo-texto { flex: 1; font-weight: 700; }
+.riscado { color: var(--texto-suave); text-decoration: line-through; text-decoration-color: #E8A3BB; }
+.check-feito {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--rosa-500); flex: none;
+  display: flex; align-items: center; justify-content: center; color: #FFFFFF;
+}
+.check-vazio { width: 26px; height: 26px; border-radius: 50%; border: 2px solid #E8B4C6; flex: none; }
+.etiqueta { padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; }
+.etiqueta-feito { background: var(--menta-100); color: var(--menta-700); }
+.etiqueta-hoje { background: var(--rosa-100); color: var(--rosa-700); }
+
+// ---------- Lado direito ----------
+.lado-form {
+  flex: 1 1 420px; min-width: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 48px 24px;
+}
+.caixa { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 28px; }
+
+.abas {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px;
+  background: #FBEAEF; border-radius: 18px; padding: 4px;
+
+  button {
+    height: 44px; border: 0; border-radius: 14px; background: transparent;
+    color: var(--texto-suave); font-weight: 800; font-size: 15px; cursor: pointer;
+  }
+  button.ativa { background: #FFFFFF; color: var(--texto); box-shadow: 0 2px 8px rgba(163, 38, 79, .10); }
+}
+
+h2 { margin: 0; font-family: var(--fonte-titulo); font-size: 34px; font-weight: 600; }
+.subtitulo { margin: 8px 0 0; font-size: 16px; color: var(--texto-suave); }
+
+form { display: flex; flex-direction: column; gap: 18px; }
+.grupo { display: flex; flex-direction: column; gap: 8px; }
+label { font-size: 14px; font-weight: 800; }
+.linha-label {
+  display: flex; justify-content: space-between; align-items: baseline;
+  a { font-size: 14px; font-weight: 700; }
+}
+
+// Campo de senha: a "caixa" é a div, o input fica dentro sem borda
+.campo-senha {
+  display: flex; align-items: center; padding: 0 6px 0 18px;
+
+  input {
+    flex: 1; min-width: 0; border: 0; outline: 0; background: transparent;
+    font-family: inherit; font-size: 16px; color: var(--texto); padding: 0;
+  }
+  button {
+    width: 44px; height: 40px; border: 0; background: transparent; color: var(--texto-suave);
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+  }
+}
+
+.lembrar {
+  display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700;
+  color: var(--texto); cursor: pointer; min-height: 44px;
+  input { width: 20px; height: 20px; accent-color: var(--rosa-500); margin: 0; }
+}
+
+.botao-principal {
+  display: flex; align-items: center; justify-content: center; height: 54px; border: 0;
+  border-radius: 18px; background: var(--rosa-500); color: #FFFFFF;
+  font-weight: 800; font-size: 16px; box-shadow: var(--sombra-botao); cursor: pointer;
+  &:disabled { opacity: .7; cursor: wait; }
+}
+
+.rodape { margin: 0; text-align: center; font-size: 15px; color: var(--texto-suave); a { font-weight: 800; } }

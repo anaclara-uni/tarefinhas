@@ -1,0 +1,10 @@
+<div class="cartao">
+  <svg class="flor" width="80" height="80" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6.2" r="3.6" fill="#FFFFFF"></circle><circle cx="17.5" cy="10.2" r="3.6" fill="#FFFFFF"></circle><circle cx="15.4" cy="16.6" r="3.6" fill="#FFFFFF"></circle><circle cx="8.6" cy="16.6" r="3.6" fill="#FFFFFF"></circle><circle cx="6.5" cy="10.2" r="3.6" fill="#FFFFFF"></circle><circle cx="12" cy="12" r="3" fill="#FFD7E4"></circle></svg>
+  <p class="titulo">Seu progresso</p>
+  <p class="numero">{{ concluidas() }} <span class="de">de {{ total() }}</span></p>
+  <p class="texto">tarefas concluídas</p>
+  <div class="barra" role="img" [attr.aria-label]="porcentagem() + '% das tarefas concluídas'">
+    <div class="barra-cheia" [style.width.%]="porcentagem()"></div>
+  </div>
+  <p class="texto incentivo">{{ incentivo() }}</p>
+</div>

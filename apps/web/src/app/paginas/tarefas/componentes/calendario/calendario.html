@@ -1,0 +1,27 @@
+<div class="cartao">
+  <div class="topo">
+    <p class="titulo">{{ titulo() }}</p>
+    <div class="setas">
+      <button type="button" aria-label="Mês anterior" (click)="trocarMes.emit(-1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+      <button type="button" aria-label="Próximo mês" (click)="trocarMes.emit(1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+    </div>
+  </div>
+
+  <div class="grade">
+    @for (letra of semana; track $index) {
+      <span class="dia-semana">{{ letra }}</span>
+    }
+    @for (casa of casas(); track $index) {
+      @if (casa) {
+        <button type="button" class="dia" [class.hoje]="casa.hoje" [class.passou]="casa.passou"
+                [class.selecionado]="diaSelecionado() === casa.iso" [attr.aria-pressed]="diaSelecionado() === casa.iso"
+                [attr.aria-label]="'Ver tarefas do dia ' + casa.dia" (click)="clicar(casa.iso)">
+          {{ casa.dia }}
+          <span class="ponto" [class.visivel]="casa.temTarefa"></span>
+        </button>
+      } @else {
+        <div></div>
+      }
+    }
+  </div>
+</div>

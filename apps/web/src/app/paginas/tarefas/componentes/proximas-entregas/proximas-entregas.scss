@@ -1,0 +1,19 @@
+.cartao {
+  background: #FFFFFF; border: 1.5px solid var(--borda-suave); border-radius: 26px; padding: 20px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.titulo { margin: 0; font-family: var(--fonte-titulo); font-size: 18px; font-weight: 500; }
+.entrega {
+  display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none;
+  &:hover .info-titulo { color: var(--rosa-700); }
+}
+.data {
+  width: 52px; height: 52px; flex: none; border-radius: 16px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.05;
+}
+.data-dia { font-family: var(--fonte-titulo); font-size: 20px; font-weight: 600; }
+.data-mes { font-size: 11px; font-weight: 800; text-transform: uppercase; }
+.info { min-width: 0; }
+.info-titulo { margin: 0; font-size: 15px; font-weight: 700; }
+.info-sub { margin: 2px 0 0; font-size: 13px; color: var(--texto-suave); }
+.vazio { margin: 0; font-size: 14px; color: var(--texto-suave); }

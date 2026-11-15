@@ -1,0 +1,56 @@
+// "Minhas listas" (valores do design ref/paginas/tarefas.html)
+
+.grupo { display: flex; flex-direction: column; gap: 4px; }
+
+.titulo-grupo {
+  margin: 0 0 6px; padding: 0 12px; font-size: 12px; font-weight: 800;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--texto-suave);
+}
+
+.item {
+  display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border: 0;
+  border-radius: 14px; background: transparent; color: var(--texto); font-size: 15px;
+  font-weight: 700; cursor: pointer; text-align: left; width: 100%;
+
+  &.ativo { background: var(--rosa-100); color: var(--rosa-700); font-weight: 800; }
+  &.ativo .contagem { color: inherit; background: #FFFFFF; border-radius: 999px; padding: 2px 9px; }
+}
+.item-nome { flex: 1; }
+.contagem { font-size: 13px; color: var(--texto-suave); }
+
+.bolinha { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.bolinha-nova { background: var(--borda); }
+
+// Lista com botões de editar/excluir que aparecem no "hover"
+.item-lista {
+  position: relative;
+  .acoes-lista {
+    position: absolute; right: 6px; top: 0; height: 44px;
+    display: none; align-items: center; gap: 2px;
+    button {
+      width: 32px; height: 32px; border: 0; border-radius: 10px; background: transparent;
+      color: var(--texto-suave); display: flex; align-items: center; justify-content: center; cursor: pointer;
+      &:hover { background: var(--fundo); color: var(--rosa-700); }
+    }
+  }
+  &:hover .acoes-lista,
+  &:focus-within .acoes-lista { display: flex; }
+  &:hover .contagem,
+  &:focus-within .contagem { visibility: hidden; }
+}
+
+// Celular: botões sempre visíveis e o número fica à esquerda deles
+.acoes-visiveis .item-lista {
+  .acoes-lista { display: flex; }
+  .item { padding-right: 84px; }
+  .contagem { visibility: visible !important; }
+  .acoes-lista button { width: 36px; height: 36px; }
+}
+
+.item-editando { cursor: default; background: var(--fundo); }
+.input-lista {
+  flex: 1; min-width: 0; height: 32px; border: 0; outline: 0; background: transparent;
+  font-family: inherit; font-size: 15px; font-weight: 700; color: var(--texto); padding: 0;
+}
+
+.item-nova-lista { color: var(--texto-suave); }

@@ -1,0 +1,47 @@
+<div class="sino">
+  <button type="button" class="botao-sino" aria-label="Notificações" [attr.aria-expanded]="aberto()" (click)="aberto.set(!aberto())">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"></path><path d="M10 21h4"></path></svg>
+    <!-- Bolinha rosa: só aparece quando tem notificação -->
+    @if (itens().length) {
+      <span class="ponto"></span>
+    }
+  </button>
+
+  @if (aberto()) {
+    <!-- Fundo invisível: clicar fora da caixinha fecha ela -->
+    <div class="fora" (click)="aberto.set(false)"></div>
+
+    <div class="caixa" role="dialog" aria-label="Lista de notificações">
+      <div class="caixa-topo">
+        <p class="caixa-titulo">Notificações</p>
+        @if (itens().length) {
+          <span class="contador">{{ itens().length }}</span>
+        }
+      </div>
+
+      @for (n of itens(); track n.id) {
+        <a class="item" [routerLink]="['/tarefas', n.id, 'editar']">
+          <span class="icone" [style.background]="estilos[n.tipo].fundo" [style.color]="estilos[n.tipo].texto">
+            @switch (n.tipo) {
+              @case ('ATRASADA') {
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5M12 16h.01"></path></svg>
+              }
+              @case ('HOJE') {
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+              }
+              @case ('LEMBRETE') {
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"></path><path d="M10 21h4"></path></svg>
+              }
+            }
+          </span>
+          <span class="item-textos">
+            <span class="item-titulo">{{ n.titulo }}</span>
+            <span class="item-sub" [style.color]="estilos[n.tipo].texto">{{ descricao(n) }}</span>
+          </span>
+        </a>
+      } @empty {
+        <p class="vazio">Tudo em dia! Nenhuma notificação por enquanto.</p>
+      }
+    </div>
+  }
+</div>

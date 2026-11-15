@@ -1,0 +1,31 @@
+.cartao {
+  background: #FFFFFF; border: 1.5px solid var(--borda-suave); border-radius: 26px; padding: 20px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.topo { display: flex; align-items: center; justify-content: space-between; }
+.titulo { margin: 0; font-family: var(--fonte-titulo); font-size: 18px; font-weight: 500; }
+.setas {
+  display: flex; gap: 2px;
+  button {
+    width: 44px; height: 44px; border: 0; border-radius: 12px; background: transparent; color: var(--texto);
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    &:hover { background: var(--fundo); }
+  }
+}
+.grade { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; text-align: center; }
+.dia-semana { font-size: 12px; font-weight: 800; color: var(--texto-suave); padding: 4px 0; }
+.dia {
+  border: 0; background: transparent; padding: 0; font-family: inherit; cursor: pointer;
+  height: 38px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  border-radius: 12px; color: var(--texto); font-size: 14px; font-weight: 700;
+  &.passou { color: var(--texto-apagado); }
+  &:hover { background: var(--fundo); }
+  &.selecionado { background: var(--rosa-100); color: var(--rosa-700); }
+  &.hoje { background: var(--rosa-500); color: #FFFFFF; }
+  &.hoje.selecionado { box-shadow: 0 0 0 3px var(--rosa-100); }
+}
+.ponto {
+  width: 5px; height: 5px; border-radius: 50%; background: transparent;
+  &.visivel { background: #E86A92; }
+  .hoje &.visivel { background: #FFFFFF; }
+}

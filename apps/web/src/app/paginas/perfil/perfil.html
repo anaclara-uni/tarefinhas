@@ -1,0 +1,52 @@
+<div class="fundo">
+  <div class="janela" role="dialog" aria-modal="true" aria-labelledby="titulo-perfil">
+    <div class="topo">
+      <div class="avatar">{{ iniciais() }}</div>
+      <div class="topo-textos">
+        <h1 id="titulo-perfil">Seu perfil</h1>
+        <p>{{ usuario().email }}</p>
+      </div>
+      <a routerLink="/tarefas" class="fechar" aria-label="Fechar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </a>
+    </div>
+
+    <form (ngSubmit)="salvar()">
+      <div class="grupo">
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" class="campo" [(ngModel)]="nome" autocomplete="name">
+      </div>
+
+      <div class="grupo">
+        <label for="papel">Embaixo do nome <span class="opcional">(ex: Estudante, Estagiária)</span></label>
+        <input id="papel" name="papel" class="campo" placeholder="Estudante" [(ngModel)]="papel">
+      </div>
+
+      <div class="grupo">
+        <label for="senha">Nova senha <span class="opcional">(deixe em branco para não mudar)</span></label>
+        <input id="senha" name="senha" type="password" class="campo" placeholder="Mínimo de 6 caracteres" [(ngModel)]="novaSenha" autocomplete="new-password">
+      </div>
+
+      <button type="button" class="sair" (click)="sair()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"></path><path d="M10 17l5-5-5-5M15 12H4"></path></svg>
+        <span class="sair-textos">
+          <span class="sair-titulo">Sair da conta</span>
+          <span class="sair-sub">Volta para a tela de entrar</span>
+        </span>
+      </button>
+
+      @if (erro()) {
+        <p class="erro" role="alert">{{ erro() }}</p>
+      }
+
+      <div class="botoes">
+        <button type="button" class="botao-excluir" (click)="excluirConta()">Excluir conta</button>
+        <a routerLink="/tarefas" class="botao-cancelar">Cancelar</a>
+        <button type="submit" class="botao-salvar" [disabled]="salvando()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

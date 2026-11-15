@@ -1,0 +1,265 @@
+/* ============================================================
+   Slides do Tarefinhas — mesmas cores e fontes do app.
+   Cada slide é um "quadro" 16:9 que se ajusta ao tamanho da tela.
+   As medidas usam "cqw" (1cqw = 1% da largura do slide), assim
+   tudo cresce e diminui junto.
+   ============================================================ */
+
+/* ---------- Fontes (arquivos locais: funcionam sem internet) ---------- */
+@font-face { font-family: 'Fredoka'; font-weight: 500; src: url('fontes/fredoka-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Fredoka'; font-weight: 600; src: url('fontes/fredoka-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Nunito'; font-weight: 400; src: url('fontes/nunito-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Nunito'; font-weight: 600; src: url('fontes/nunito-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Nunito'; font-weight: 700; src: url('fontes/nunito-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Nunito'; font-weight: 800; src: url('fontes/nunito-latin-800-normal.woff2') format('woff2'); }
+
+/* ---------- Cores do guia de estilo ---------- */
+:root {
+  --rosa-500: #C9356A;
+  --rosa-700: #A3264F;
+  --rosa-100: #FFE3EC;
+  --rosa-50: #FFF0F4;
+  --fundo: #FFF7F5;
+  --fundo-fora: #EFDCE2;
+  --borda: #F3DCE3;
+  --texto: #3B2A33;
+  --texto-suave: #7D6872;
+  --lavanda-100: #EEE8FF;
+  --lavanda-700: #5B3DB8;
+  --menta-100: #DDF4E8;
+  --menta-700: #1E7049;
+  --pessego-100: #FFE8D6;
+  --pessego-700: #9A4A10;
+  --codigo-fundo: #3B2A33;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-snap-type: y mandatory;   /* a rolagem "gruda" em cada slide */
+  scroll-behavior: smooth;
+  background: var(--fundo-fora);
+}
+body { margin: 0; font-family: 'Nunito', system-ui, sans-serif; color: var(--texto); }
+
+/* ---------- Slide ---------- */
+.slide {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quadro {
+  position: relative;
+  width: min(96vw, calc(94vh * 16 / 9));
+  aspect-ratio: 16 / 9;
+  container-type: size;
+  background: var(--fundo);
+  border-radius: 1.8cqw;
+  box-shadow: 0 2cqw 5cqw rgba(110, 58, 80, .18);
+  overflow: hidden;
+  padding: 4.2cqw 5cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 2cqw;
+}
+
+/* Cabeçalho de cada slide: etiqueta + título */
+.etiqueta span { text-transform: none; letter-spacing: .02em; font-family: ui-monospace, Consolas, monospace; }
+.etiqueta {
+  align-self: flex-start;
+  font-size: 1.05cqw; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--rosa-700); background: var(--rosa-100);
+  padding: .45cqw 1.1cqw; border-radius: 99cqw;
+}
+h1, h2, h3 { font-family: 'Fredoka', sans-serif; font-weight: 600; margin: 0; line-height: 1.1; }
+h2 { font-size: 3.3cqw; }
+h3 { font-size: 1.7cqw; font-weight: 500; }
+p { margin: 0; }
+.sub { font-size: 1.6cqw; color: var(--texto-suave); line-height: 1.45; }
+strong { font-weight: 800; }
+
+/* Número do slide no canto */
+.numero {
+  position: absolute; right: 2.4cqw; bottom: 1.8cqw;
+  font-size: 1cqw; font-weight: 800; color: var(--texto-suave);
+}
+.marca {
+  position: absolute; left: 2.4cqw; bottom: 1.8cqw;
+  display: flex; align-items: center; gap: .6cqw;
+  font-family: 'Fredoka', sans-serif; font-size: 1.1cqw; font-weight: 600; color: var(--texto-suave);
+}
+.marca svg { width: 1.6cqw; height: 1.6cqw; }
+
+/* ---------- Layouts ---------- */
+.duas-colunas { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.25fr 1fr; gap: 2.6cqw; align-items: start; }
+.duas-colunas.iguais { grid-template-columns: 1fr 1fr; }
+.coluna { display: flex; flex-direction: column; gap: 1.4cqw; min-width: 0; }
+.grade-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6cqw; }
+.grade-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; }
+.grade-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6cqw; }
+
+/* Cartão branco */
+.cartao {
+  background: #FFFFFF; border: .12cqw solid var(--borda); border-radius: 1.6cqw;
+  padding: 1.6cqw 1.8cqw; display: flex; flex-direction: column; gap: .7cqw;
+}
+.cartao h3 { font-size: 1.7cqw; }
+.cartao p, .cartao li { font-size: 1.4cqw; line-height: 1.45; color: var(--texto-suave); }
+.cartao ul { margin: 0; padding-left: 1.3cqw; display: flex; flex-direction: column; gap: .3cqw; }
+.cartao.rosa { background: var(--rosa-100); border-color: transparent; }
+.cartao.lavanda { background: var(--lavanda-100); border-color: transparent; }
+.cartao.menta { background: var(--menta-100); border-color: transparent; }
+.cartao.pessego { background: var(--pessego-100); border-color: transparent; }
+.cartao.rosa h3, .cartao.rosa p { color: var(--rosa-700); }
+.cartao.lavanda h3, .cartao.lavanda p, .cartao.lavanda li { color: var(--lavanda-700); }
+.cartao.menta h3, .cartao.menta p, .cartao.menta li { color: var(--menta-700); }
+.cartao.pessego h3, .cartao.pessego p, .cartao.pessego li { color: var(--pessego-700); }
+
+.icone {
+  width: 3.6cqw; height: 3.6cqw; border-radius: 1.1cqw; background: #FFFFFF;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1.5cqw;
+}
+
+/* Lista com bolinhas coloridas */
+.pontos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1cqw; }
+.pontos li { position: relative; padding-left: 2cqw; font-size: 1.45cqw; line-height: 1.45; }
+.pontos li::before {
+  content: ''; position: absolute; left: 0; top: .55cqw;
+  width: .9cqw; height: .9cqw; border-radius: 50%; background: var(--rosa-500);
+}
+.pontos.pequenos li { font-size: 1.3cqw; }
+
+/* Termos de código no meio do texto */
+code {
+  font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+  font-size: .92em; background: var(--rosa-100); color: var(--rosa-700);
+  padding: .1cqw .45cqw; border-radius: .4cqw;
+}
+
+/* ---------- Bloco de SQL ---------- */
+pre.sql {
+  margin: 0; background: var(--codigo-fundo); color: #FFF7F5;
+  border-radius: 1.4cqw; padding: 1.5cqw 1.8cqw;
+  font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+  font-size: 1.32cqw; line-height: 1.55; white-space: pre; overflow: hidden;
+}
+pre.sql.menor { font-size: 1.1cqw; }
+pre.sql code { background: none; color: inherit; padding: 0; font-size: inherit; }
+/* Cores do SQL (aplicadas pelo script no fim do HTML) */
+.sql .k { color: #FF9EC0; font-weight: 700; }   /* palavras-chave: SELECT, WHERE... */
+.sql .f { color: #FFD48A; }                     /* funções: COUNT, CAST... */
+.sql .s { color: #9BE3BE; }                     /* textos: 'ALTA' */
+.sql .p { color: #C9B8FF; }                     /* parâmetros: :usuarioId */
+.sql .n { color: #FFC59E; }                     /* números */
+.sql .c { color: #A8949E; font-style: italic; } /* comentários */
+.sql .d { background: rgba(255, 158, 192, .18); border-radius: .3cqw; box-shadow: 0 0 0 .25cqw rgba(255, 158, 192, .18); } /* destaque */
+
+/* ---------- Tabela de resultado ---------- */
+.resultado { display: flex; flex-direction: column; gap: .6cqw; }
+.resultado-titulo { font-size: 1.05cqw; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--texto-suave); }
+table { border-collapse: separate; border-spacing: 0; width: 100%; background: #FFFFFF; border: .12cqw solid var(--borda); border-radius: 1.2cqw; overflow: hidden; }
+th, td { text-align: left; padding: .65cqw 1.1cqw; font-size: 1.2cqw; }
+th { background: var(--rosa-100); color: var(--rosa-700); font-weight: 800; font-family: ui-monospace, Consolas, monospace; font-size: 1.05cqw; }
+td { border-top: .1cqw solid var(--borda); }
+td.num { text-align: right; font-weight: 800; font-family: ui-monospace, Consolas, monospace; }
+
+/* Onde aparece na tela */
+.na-tela {
+  display: flex; align-items: center; gap: 1cqw; padding: 1cqw 1.4cqw; border-radius: 1.2cqw;
+  background: var(--lavanda-100); color: var(--lavanda-700); font-size: 1.25cqw; font-weight: 700;
+}
+.na-tela svg { width: 2cqw; height: 2cqw; flex: none; }
+
+/* ---------- Capa e divisórias ---------- */
+.capa { background: var(--rosa-100); justify-content: center; padding: 6cqw 7cqw; }
+.capa h1 { font-size: 6.4cqw; }
+.capa .sub { font-size: 2cqw; color: #6E3A50; max-width: 55cqw; }
+.capa .flor { position: absolute; right: -6cqw; bottom: -6cqw; width: 34cqw; opacity: .75; }
+.capa .brilho { position: absolute; width: 2.6cqw; }
+.capa .logo { display: flex; align-items: center; gap: 1.2cqw; margin-bottom: 1.5cqw; }
+.capa .logo-icone {
+  width: 5cqw; height: 5cqw; border-radius: 1.6cqw; background: #FFFFFF; color: var(--rosa-500);
+  display: flex; align-items: center; justify-content: center;
+}
+.capa .logo-icone svg { width: 3cqw; height: 3cqw; }
+.capa .logo span { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 2.6cqw; }
+.selos { display: flex; gap: .8cqw; flex-wrap: wrap; margin-top: 1.6cqw; }
+.selo {
+  background: #FFFFFF; border-radius: 99cqw; padding: .6cqw 1.4cqw;
+  font-size: 1.3cqw; font-weight: 800; color: var(--texto);
+  box-shadow: 0 .6cqw 1.6cqw rgba(163, 38, 79, .10);
+}
+.autoria { margin-top: 2.4cqw; font-size: 1.4cqw; font-weight: 700; color: #6E3A50; }
+
+.divisoria { background: var(--texto); color: #FFFFFF; justify-content: center; padding: 6cqw 7cqw; }
+.divisoria .etiqueta { background: rgba(255, 255, 255, .12); color: #FFB8CF; }
+.divisoria h2 { font-size: 5.6cqw; }
+.divisoria .sub { color: #D9C6CF; font-size: 1.9cqw; max-width: 60cqw; }
+.divisoria .numero, .divisoria .marca { color: #A8949E; }
+.divisoria .grande {
+  position: absolute; right: 5cqw; top: 50%; transform: translateY(-50%);
+  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 22cqw; color: rgba(255, 184, 207, .12);
+}
+
+/* ---------- Arquitetura ---------- */
+.fluxo { display: flex; align-items: stretch; gap: 1cqw; }
+.fluxo .cartao { flex: 1; align-items: flex-start; }
+.seta { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4cqw; color: var(--rosa-500); font-size: 1cqw; font-weight: 800; min-width: 6cqw; text-align: center; }
+.seta svg { width: 4cqw; height: 2cqw; }
+.caixa-docker {
+  border: .2cqw dashed #C9A9B6; border-radius: 1.8cqw; padding: 1.6cqw; display: flex; flex-direction: column; gap: 1cqw;
+}
+.caixa-docker-titulo { font-size: 1.1cqw; font-weight: 800; color: var(--texto-suave); letter-spacing: .08em; text-transform: uppercase; }
+
+/* ---------- Modelo de dados (DER) ---------- */
+.der { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4cqw; align-items: start; }
+.tabela-der { background: #FFFFFF; border: .12cqw solid var(--borda); border-radius: 1.3cqw; overflow: hidden; }
+.tabela-der h3 { font-size: 1.8cqw; padding: 1.1cqw 1.4cqw; color: #FFFFFF; }
+.tabela-der ul { list-style: none; margin: 0; padding: .9cqw 1.4cqw 1.2cqw; display: flex; flex-direction: column; gap: .55cqw; }
+.tabela-der li { font-family: ui-monospace, Consolas, monospace; font-size: 1.2cqw; display: flex; justify-content: space-between; gap: .6cqw; }
+.tabela-der li span { color: var(--texto-suave); }
+.tabela-der .pk { color: var(--rosa-700); font-weight: 700; }
+.tabela-der .fk { color: var(--lavanda-700); font-weight: 700; }
+.relacoes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4cqw; }
+.relacao { background: #FFFFFF; border-radius: 1.2cqw; padding: 1.2cqw 1.4cqw; font-size: 1.3cqw; border: .12cqw solid var(--borda); }
+.relacao b { display: block; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1.5cqw; color: var(--rosa-700); margin-bottom: .2cqw; }
+
+/* ---------- Tabela do CRUD ---------- */
+.crud th, .crud td { font-size: 1.35cqw; padding: 1.2cqw 1.1cqw; vertical-align: top; }
+.crud td:first-child { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1.6cqw; white-space: nowrap; }
+.crud code { font-size: 1.08cqw; white-space: nowrap; line-height: 2; }
+.crud .metodo { display: inline-block; font-size: .95cqw; font-weight: 800; padding: .1cqw .5cqw; border-radius: .4cqw; margin-right: .3cqw; }
+.m-post { background: var(--menta-100); color: var(--menta-700); }
+.m-get { background: var(--lavanda-100); color: var(--lavanda-700); }
+.m-put { background: var(--pessego-100); color: var(--pessego-700); }
+.m-del { background: var(--rosa-100); color: var(--rosa-700); }
+
+/* Camadas Controller -> Service -> Repository */
+.camadas { display: flex; flex-direction: column; gap: .8cqw; }
+.camada { display: flex; align-items: center; gap: 1.2cqw; background: #FFFFFF; border: .12cqw solid var(--borda); border-radius: 1.2cqw; padding: .9cqw 1.2cqw; }
+.camada .icone { background: var(--rosa-100); color: var(--rosa-700); width: 3cqw; height: 3cqw; font-size: 1.3cqw; flex: none; }
+.camada b { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1.4cqw; }
+.camada p { font-size: 1.15cqw; color: var(--texto-suave); }
+
+/* ---------- Ajuda de navegação (some na impressão) ---------- */
+.ajuda {
+  position: fixed; left: 50%; bottom: 1.2vh; transform: translateX(-50%);
+  font-size: 12px; font-weight: 700; color: #7D6872; background: rgba(255, 255, 255, .8);
+  padding: 6px 14px; border-radius: 99px; transition: opacity .4s;
+}
+.ajuda.escondida { opacity: 0; pointer-events: none; }
+.ajuda kbd { font-family: inherit; background: #FFE3EC; color: #A3264F; padding: 1px 6px; border-radius: 6px; }
+
+/* ---------- Impressão / salvar como PDF (Ctrl+P) ---------- */
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  html { background: none; scroll-snap-type: none; }
+  .slide { height: 720px; width: 1280px; page-break-after: always; break-after: page; }
+  .quadro { width: 1280px; border-radius: 0; box-shadow: none; }
+  .ajuda { display: none; }
+  * { box-shadow: none !important; }   /* sombras viram borrões no PDF */
+}

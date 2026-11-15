@@ -1,0 +1,97 @@
+// ============================================================
+//  Estilos globais do Tarefinhas
+//  As cores, raios e fontes vêm do guia de estilo do design.
+//  As fontes Fredoka e Nunito vêm do pacote @fontsource
+//  (estão no angular.json), então funcionam mesmo sem internet.
+// ============================================================
+
+:root {
+  --rosa-500: #C9356A;
+  --rosa-700: #A3264F;
+  --rosa-100: #FFE3EC;
+  --fundo: #FFF7F5;
+  --superficie: #FFFFFF;
+  --borda: #F3DCE3;
+  --borda-suave: #F6E1E8;
+  --borda-campo: #F0D3DD;
+  --texto: #3B2A33;
+  --texto-suave: #7D6872;
+  --texto-apagado: #8A7580;
+  --lavanda-100: #EEE8FF;
+  --lavanda-700: #5B3DB8;
+  --menta-100: #DDF4E8;
+  --menta-700: #1E7049;
+  --pessego-100: #FFE8D6;
+  --pessego-700: #9A4A10;
+
+  --raio-sm: 14px;
+  --raio-md: 16px;
+  --raio-lg: 20px;
+  --raio-xl: 26px;
+
+  --fonte-titulo: 'Fredoka', sans-serif;
+  --fonte-texto: 'Nunito', system-ui, sans-serif;
+
+  --sombra-botao: 0 10px 24px rgba(201, 53, 106, .25);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  font-family: var(--fonte-texto);
+  color: var(--texto);
+}
+
+a { color: var(--rosa-700); }
+a:hover { color: var(--rosa-500); }
+
+input::placeholder,
+textarea::placeholder { color: var(--texto-apagado); }
+
+button { font-family: inherit; }
+
+// Campo de texto padrão (login e formulário de tarefa).
+// Quando está com o cursor dentro, ganha a borda rosa com "brilho" do design.
+.campo {
+  height: 52px;
+  padding: 0 18px;
+  border: 1.5px solid var(--borda-campo);
+  border-radius: var(--raio-md);
+  background: var(--superficie);
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--texto);
+  outline: 0;
+  width: 100%;
+
+  &:focus,
+  &:focus-within {
+    border: 2px solid var(--rosa-500);
+    box-shadow: 0 0 0 4px var(--rosa-100);
+  }
+}
+
+// Mensagem de erro vinda da API
+.erro {
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: var(--raio-sm);
+  background: var(--rosa-100);
+  color: var(--rosa-700);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+// Texto só para leitores de tela (acessibilidade)
+.so-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

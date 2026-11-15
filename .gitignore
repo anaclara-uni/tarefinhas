@@ -1,0 +1,19 @@
+# Pasta de referência do design: NUNCA vai para o GitHub
+ref/
+
+# Dependências e arquivos gerados (são recriados sozinhos)
+node_modules/
+dist/
+.angular/
+target/
+
+# Arquivos do sistema e de editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# Zip de entrega e variáveis secretas
+*.zip
+.env

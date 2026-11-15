@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tarefinhas — Apresentação</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<!-- ============================================================
+     COMO USAR: abra este arquivo no navegador (dois cliques).
+     Setas ← → (ou ↑ ↓, espaço) passam os slides.  F = tela cheia.
+     Para gerar PDF: Ctrl+P → "Salvar como PDF".
+     ============================================================ -->
+
+<!-- 1. CAPA -->
+<section class="slide">
+  <div class="quadro capa">
+    <svg class="flor" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6.2" r="3.6" fill="#FFFFFF"/><circle cx="17.5" cy="10.2" r="3.6" fill="#FFFFFF"/><circle cx="15.4" cy="16.6" r="3.6" fill="#FFFFFF"/><circle cx="8.6" cy="16.6" r="3.6" fill="#FFFFFF"/><circle cx="6.5" cy="10.2" r="3.6" fill="#FFFFFF"/><circle cx="12" cy="12" r="3" fill="#FFD7E4"/></svg>
+    <svg class="brilho" style="left: 62%; top: 16%" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>
+    <svg class="brilho" style="left: 68%; top: 26%; width: 1.6cqw" viewBox="0 0 24 24" fill="#E8A3BB" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>
+
+    <div class="logo">
+      <div class="logo-icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/><path d="M9.2 11.2l2 2 3.6-3.6"/></svg></div>
+      <span>Tarefinhas</span>
+    </div>
+    <h1>Suas tarefas, organizadas com carinho.</h1>
+    <p class="sub" style="margin-top: 1.4cqw">Um app de tarefas com CRUDs completos e consultas SQL no PostgreSQL.</p>
+    <div class="selos">
+      <span class="selo">Angular</span>
+      <span class="selo">Java + Spring Boot</span>
+      <span class="selo">PostgreSQL</span>
+      <span class="selo">Docker</span>
+    </div>
+    <!-- TROQUE pelos seus dados -->
+    <p class="autoria">[Seu nome] · [Disciplina] · [Professor(a)]</p>
+  </div>
+</section>
+
+<!-- 2. O PROJETO -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">O projeto</span>
+    <h2>O que o Tarefinhas faz</h2>
+    <div class="duas-colunas" style="grid-template-columns: 1fr 1.35fr; align-items: center">
+      <ul class="pontos">
+        <li><strong>Contas de usuário</strong> com cadastro, login e senha protegida.</li>
+        <li><strong>Listas</strong> para separar Faculdade, Estágio, Casa, Pessoal...</li>
+        <li><strong>Tarefas</strong> com data de entrega, prioridade, favorita, lembrete e <strong>subtarefas</strong>.</li>
+        <li><strong>Filtros e busca:</strong> hoje, próximos 7 dias, concluídas, por lista, por dia do calendário.</li>
+        <li><strong>Painel:</strong> progresso, calendário, próximas entregas e notificações — tudo calculado com <strong>SQL</strong>.</li>
+      </ul>
+      <img src="imagens/tela-tarefas.png" alt="Tela principal do Tarefinhas" style="width: 100%; border-radius: 1.4cqw; border: .12cqw solid var(--borda); box-shadow: 0 1.5cqw 3cqw rgba(110,58,80,.15)">
+    </div>
+  </div>
+</section>
+
+<!-- 3. TECNOLOGIAS -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Tecnologias</span>
+    <h2>As tecnologias do semestre — e por que cada uma</h2>
+    <div class="grade-4" style="flex: 1">
+      <div class="cartao rosa">
+        <div class="icone">A</div>
+        <h3>Angular</h3>
+        <p>Frontend em <strong>TypeScript</strong>, dividido em <strong>componentes</strong> reutilizáveis. Os <strong>services</strong> falam com a API e as <strong>rotas</strong> trocam de tela sem recarregar a página.</p>
+      </div>
+      <div class="cartao lavanda">
+        <div class="icone">J</div>
+        <h3>Java + Spring Boot</h3>
+        <p>Backend em camadas (<strong>Controller → Service → Repository</strong>). O Spring Data JPA faz os CRUDs e deixa escrever <strong>SQL nativo</strong> com <code>@Query</code>. Validação e erros prontos.</p>
+      </div>
+      <div class="cartao menta">
+        <div class="icone">P</div>
+        <h3>PostgreSQL</h3>
+        <p>Banco <strong>relacional</strong>, gratuito e muito usado. Garante as regras com <strong>chaves, CHECK e UNIQUE</strong> e tem recursos ótimos para relatórios, como <code>COUNT FILTER</code> e <code>ILIKE</code>.</p>
+      </div>
+      <div class="cartao pessego">
+        <div class="icone">D</div>
+        <h3>Docker</h3>
+        <p>Cada parte roda num <strong>container</strong>. Com um comando (<code>docker compose up</code>) o banco, a API e o site sobem iguais em qualquer computador.</p>
+      </div>
+    </div>
+    <p class="sub">+ <strong>Flyway</strong> (cria as tabelas a partir de arquivos <code>.sql</code>) e <strong>BCrypt</strong> (guarda a senha embaralhada).</p>
+  </div>
+</section>
+
+<!-- 4. ARQUITETURA -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Arquitetura</span>
+    <h2>Como as peças conversam</h2>
+    <div class="caixa-docker" style="margin-top: 1cqw">
+      <span class="caixa-docker-titulo">Docker · docker-compose.yml</span>
+      <div class="fluxo">
+        <div class="cartao">
+          <h3>Navegador</h3>
+          <p>A pessoa abre <code>localhost:4200</code></p>
+        </div>
+        <div class="seta"><svg viewBox="0 0 40 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10h34M28 3l8 7-8 7"/></svg>HTML</div>
+        <div class="cartao rosa">
+          <h3>Angular + nginx</h3>
+          <p>Mostra as telas e chama <code>/api/...</code></p>
+        </div>
+        <div class="seta"><svg viewBox="0 0 40 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10h34M28 3l8 7-8 7"/></svg>JSON</div>
+        <div class="cartao lavanda">
+          <h3>API Spring Boot</h3>
+          <p>Regras, validação e consultas</p>
+        </div>
+        <div class="seta"><svg viewBox="0 0 40 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10h34M28 3l8 7-8 7"/></svg>SQL</div>
+        <div class="cartao menta">
+          <h3>PostgreSQL</h3>
+          <p>Guarda os dados (4 tabelas)</p>
+        </div>
+      </div>
+    </div>
+    <ul class="pontos pequenos">
+      <li>O site manda e recebe <strong>JSON</strong>; a API transforma em <strong>SQL</strong> e devolve o resultado.</li>
+      <li>Toda consulta filtra por <code>usuario_id</code>: cada pessoa só vê os próprios dados.</li>
+      <li>Para mostrar o banco por dentro usamos o <strong>Adminer</strong> (<code>localhost:8081</code>), e para testar a API, o <strong>Swagger</strong>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5. MODELO DE DADOS -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Banco de dados</span>
+    <h2>Modelo de dados: 4 tabelas</h2>
+    <div class="der">
+      <div class="tabela-der">
+        <h3 style="background: #E86A92">usuarios</h3>
+        <ul>
+          <li><b class="pk">id</b><span>PK</span></li>
+          <li>nome<span>varchar</span></li>
+          <li>email<span>UNIQUE</span></li>
+          <li>senha_hash<span>BCrypt</span></li>
+          <li>papel<span>varchar</span></li>
+          <li>criado_em<span>timestamp</span></li>
+        </ul>
+      </div>
+      <div class="tabela-der">
+        <h3 style="background: #8B6CF0">listas</h3>
+        <ul>
+          <li><b class="pk">id</b><span>PK</span></li>
+          <li><b class="fk">usuario_id</b><span>FK</span></li>
+          <li>nome<span>varchar</span></li>
+          <li>cor<span>#E86A92</span></li>
+        </ul>
+      </div>
+      <div class="tabela-der">
+        <h3 style="background: #C9356A">tarefas</h3>
+        <ul>
+          <li><b class="pk">id</b><span>PK</span></li>
+          <li><b class="fk">usuario_id</b><span>FK</span></li>
+          <li><b class="fk">lista_id</b><span>FK · nulo</span></li>
+          <li>titulo<span>NOT NULL</span></li>
+          <li>descricao<span>text</span></li>
+          <li>data_entrega<span>date</span></li>
+          <li>prioridade<span>CHECK</span></li>
+          <li>concluida · favorita · lembrete<span>bool</span></li>
+        </ul>
+      </div>
+      <div class="tabela-der">
+        <h3 style="background: #3DBE85">subtarefas</h3>
+        <ul>
+          <li><b class="pk">id</b><span>PK</span></li>
+          <li><b class="fk">tarefa_id</b><span>FK</span></li>
+          <li>titulo<span>varchar</span></li>
+          <li>concluida<span>bool</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="relacoes">
+      <div class="relacao"><b>usuário 1 → N listas</b>apagou o usuário, apaga as listas (CASCADE)</div>
+      <div class="relacao"><b>usuário 1 → N tarefas</b>apagou o usuário, apaga as tarefas (CASCADE)</div>
+      <div class="relacao"><b>lista 0..1 → N tarefas</b>apagou a lista, a tarefa fica sem lista (SET NULL)</div>
+      <div class="relacao"><b>tarefa 1 → N subtarefas</b>apagou a tarefa, apaga as subtarefas (CASCADE)</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. CRIANDO AS TABELAS -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Banco de dados · DDL</span>
+    <h2>Criando as tabelas com regras</h2>
+    <div class="duas-colunas">
+      <pre class="sql menor">-- V1__criar_tabelas.sql
+CREATE TABLE tarefas (
+    id            BIGSERIAL    PRIMARY KEY,
+    usuario_id    BIGINT       NOT NULL
+                  ⟦REFERENCES usuarios (id) ON DELETE CASCADE⟧,
+    lista_id      BIGINT
+                  ⟦REFERENCES listas (id) ON DELETE SET NULL⟧,
+    titulo        VARCHAR(200) NOT NULL,
+    descricao     TEXT,
+    data_entrega  DATE,
+    prioridade    VARCHAR(10)  NOT NULL DEFAULT 'MEDIA'
+                  ⟦CHECK (prioridade IN ('BAIXA', 'MEDIA', 'ALTA'))⟧,
+    concluida     BOOLEAN      NOT NULL DEFAULT FALSE,
+    criado_em     TIMESTAMP    NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX idx_tarefas_usuario ON tarefas (usuario_id);
+
+-- V3__perfil_do_usuario.sql
+⟦ALTER TABLE usuarios⟧
+    ADD COLUMN papel VARCHAR(60) NOT NULL DEFAULT 'Estudante';</pre>
+      <div class="coluna">
+        <ul class="pontos pequenos">
+          <li><strong>PRIMARY KEY / BIGSERIAL:</strong> o banco numera cada linha sozinho.</li>
+          <li><strong>REFERENCES (chave estrangeira):</strong> não existe tarefa de um usuário que não existe.</li>
+          <li><strong>ON DELETE CASCADE / SET NULL:</strong> o que acontece quando o "pai" é apagado.</li>
+          <li><strong>CHECK:</strong> prioridade só aceita BAIXA, MEDIA ou ALTA.</li>
+          <li><strong>UNIQUE</strong> no e-mail: não existem duas contas iguais.</li>
+          <li><strong>INDEX:</strong> deixa as buscas por usuário mais rápidas.</li>
+          <li><strong>ALTER TABLE:</strong> muda uma tabela que já tem dados.</li>
+        </ul>
+        <div class="cartao lavanda">
+          <p><strong>Flyway</strong> roda os arquivos <code>V1</code>, <code>V2</code>, <code>V3</code> em ordem quando a API liga — e anota quais já rodaram.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. DIVISÓRIA CRUD -->
+<section class="slide">
+  <div class="quadro divisoria">
+    <span class="grande">CRUD</span>
+    <span class="etiqueta">Parte 1</span>
+    <h2>Os CRUDs</h2>
+    <p class="sub"><strong>C</strong>reate, <strong>R</strong>ead, <strong>U</strong>pdate e <strong>D</strong>elete: criar, ler, atualizar e apagar — em todas as entidades do sistema.</p>
+  </div>
+</section>
+
+<!-- 8. TABELA CRUD -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">CRUD</span>
+    <h2>CRUD completo nas 4 entidades</h2>
+    <table class="crud">
+      <thead>
+        <tr><th></th><th>Create · INSERT</th><th>Read · SELECT</th><th>Update · UPDATE</th><th>Delete · DELETE</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Usuários</td>
+          <td><span class="metodo m-post">POST</span><code>/api/auth/cadastro</code></td>
+          <td><span class="metodo m-get">GET</span><code>/api/usuarios/me</code><br><span class="metodo m-post">POST</span><code>/api/auth/login</code></td>
+          <td><span class="metodo m-put">PUT</span><code>/api/usuarios/me</code></td>
+          <td><span class="metodo m-del">DELETE</span><code>/api/usuarios/me</code></td>
+        </tr>
+        <tr>
+          <td>Listas</td>
+          <td><span class="metodo m-post">POST</span><code>/api/listas</code></td>
+          <td><span class="metodo m-get">GET</span><code>/api/listas</code></td>
+          <td><span class="metodo m-put">PUT</span><code>/api/listas/{id}</code></td>
+          <td><span class="metodo m-del">DELETE</span><code>/api/listas/{id}</code></td>
+        </tr>
+        <tr>
+          <td>Tarefas</td>
+          <td><span class="metodo m-post">POST</span><code>/api/tarefas</code></td>
+          <td><span class="metodo m-get">GET</span><code>/api/tarefas</code><br><span class="metodo m-get">GET</span><code>/api/tarefas/{id}</code></td>
+          <td><span class="metodo m-put">PUT</span><code>/api/tarefas/{id}</code><br><span class="metodo m-put">PATCH</span><code>…/concluir</code> <code>…/favoritar</code></td>
+          <td><span class="metodo m-del">DELETE</span><code>/api/tarefas/{id}</code></td>
+        </tr>
+        <tr>
+          <td>Subtarefas</td>
+          <td colspan="4" style="color: var(--texto-suave)">Salvas <strong style="color: var(--texto)">junto com a tarefa</strong> (no POST e no PUT). Tirou uma da lista → o JPA faz o <code>DELETE</code>. Apagou a tarefa → o banco apaga as subtarefas (<code>ON DELETE CASCADE</code>).</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="na-tela">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="3"/><path d="M8 21h8M12 17v4"/></svg>
+      Na tela: cadastro e perfil · "Nova lista" e o lápis/lixeira das listas · adicionar, editar, concluir, favoritar e excluir tarefas.
+    </div>
+  </div>
+</section>
+
+<!-- 9. COMO UM CRUD ACONTECE -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">CRUD · por dentro</span>
+    <h2>O caminho de um pedido até o banco</h2>
+    <div class="duas-colunas iguais">
+      <div class="camadas">
+        <div class="camada"><span class="icone">1</span><div><b>TarefaController</b><p>Recebe <code>PATCH /api/tarefas/6/concluir</code> (o "garçom").</p></div></div>
+        <div class="camada"><span class="icone">2</span><div><b>TarefaService</b><p>Busca a tarefa <strong>da usuária logada</strong> e inverte <code>concluida</code> (o "cozinheiro").</p></div></div>
+        <div class="camada"><span class="icone">3</span><div><b>TarefaRepository</b><p><code>findByIdAndUsuarioId()</code> e <code>save()</code> — o Spring Data gera o SQL (a "despensa").</p></div></div>
+        <div class="camada"><span class="icone">4</span><div><b>PostgreSQL</b><p>Executa o SQL e devolve o resultado, que volta como JSON.</p></div></div>
+      </div>
+      <div class="coluna">
+        <div class="resultado-titulo">SQL que o Hibernate gerou (log real da API)</div>
+        <pre class="sql menor">-- Create  (POST /api/tarefas)
+INSERT INTO tarefas (concluida, criado_em, data_entrega, descricao,
+  favorita, lembrete, lista_id, prioridade, titulo, usuario_id)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+
+-- Read  (só a tarefa da pessoa logada)
+SELECT ... FROM tarefas t1_0
+ WHERE t1_0.id = ? AND t1_0.usuario_id = ?
+
+-- Update  (PATCH /api/tarefas/6/concluir)
+UPDATE tarefas SET concluida = ?, ... WHERE id = ?
+
+-- Delete  (DELETE /api/tarefas/6)
+DELETE FROM tarefas WHERE id = ?</pre>
+        <p class="sub" style="font-size: 1.25cqw">Os <code>?</code> são <strong>parâmetros</strong>: o valor nunca é colado no texto do SQL, o que evita <strong>SQL injection</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. DIVISÓRIA CONSULTAS -->
+<section class="slide">
+  <div class="quadro divisoria">
+    <span class="grande">SQL</span>
+    <span class="etiqueta">Parte 2</span>
+    <h2>As consultas SQL</h2>
+    <p class="sub">6 consultas escritas à mão (SQL nativo do PostgreSQL) que alimentam a lista, os filtros, o painel, o calendário e as notificações.</p>
+  </div>
+</section>
+
+<!-- 11. CONSULTA 1 -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Consulta 1 · <span>TarefaRepository.buscar</span></span>
+    <h2>Buscar tarefas com filtros opcionais</h2>
+    <div class="duas-colunas">
+      <pre class="sql">SELECT t.*
+  FROM tarefas t
+ WHERE t.usuario_id = :usuarioId
+   AND (⟦CAST(:listaId AS BIGINT) IS NULL⟧
+        OR t.lista_id = CAST(:listaId AS BIGINT))
+   AND (CAST(:busca AS TEXT) IS NULL
+        OR t.titulo ⟦ILIKE '%' || :busca || '%'⟧)
+   AND (CAST(:data AS DATE) IS NULL
+        OR t.data_entrega = CAST(:data AS DATE))
+   AND (    :visao = 'todas'
+         OR (:visao = 'hoje'
+             AND t.data_entrega = ⟦CURRENT_DATE⟧)
+         OR (:visao = 'semana'
+             AND t.data_entrega ⟦BETWEEN CURRENT_DATE
+                                 AND CURRENT_DATE + 7⟧)
+         OR (:visao = 'concluidas'
+             AND t.concluida = TRUE) )</pre>
+      <div class="coluna">
+        <ul class="pontos pequenos">
+          <li><strong>Uma consulta, vários filtros:</strong> lista, texto, dia e visão.</li>
+          <li><code>CAST(:x) IS NULL OR ...</code> → se o filtro não foi enviado, a condição é ignorada.</li>
+          <li><code>ILIKE '%texto%'</code> → "contém", sem diferenciar maiúscula de minúscula.</li>
+          <li><code>CURRENT_DATE + 7</code> e <code>BETWEEN</code> → os próximos 7 dias.</li>
+        </ul>
+        <div class="resultado">
+          <span class="resultado-titulo">Exemplo: busca = "diagrama"</span>
+          <table>
+            <tr><th>titulo</th><th>prioridade</th></tr>
+            <tr><td>Montar o diagrama ER do projeto</td><td>ALTA</td></tr>
+          </table>
+        </div>
+        <div class="na-tela">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="3"/><path d="M8 21h8M12 17v4"/></svg>
+          Na tela: lista principal, menu Hoje / 7 dias / Concluídas, listas, busca e clique no calendário.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. CONSULTA 1 (ORDER BY) -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Consulta 1 · continuação</span>
+    <h2>"Ordenar por" com ORDER BY + CASE</h2>
+    <div class="duas-colunas">
+      <pre class="sql"> ORDER BY
+   ⟦CASE WHEN :ordem = 'prioridade' THEN
+        CASE t.prioridade WHEN 'ALTA'  THEN 1
+                          WHEN 'MEDIA' THEN 2
+                          ELSE 3 END
+   END⟧,
+   CASE WHEN :ordem = 'titulo'
+        THEN LOWER(t.titulo) END,
+   CASE WHEN :ordem = 'recentes'
+        THEN t.criado_em END ⟦DESC⟧,
+   t.data_entrega ⟦NULLS LAST⟧,
+   t.id</pre>
+      <div class="coluna">
+        <ul class="pontos pequenos">
+          <li>Cada linha do <code>ORDER BY</code> só "vale" quando a ordem escolhida bate. Nas outras, o <code>CASE</code> dá <code>NULL</code> e não muda nada.</li>
+          <li>Para prioridade, o <code>CASE</code> transforma <strong>ALTA/MEDIA/BAIXA</strong> em <strong>1/2/3</strong>.</li>
+          <li><code>DESC</code> → do maior para o menor (mais recentes primeiro).</li>
+          <li><code>NULLS LAST</code> → tarefas sem data vão para o fim.</li>
+        </ul>
+        <div class="resultado">
+          <span class="resultado-titulo">Exemplo: ordem = 'prioridade'</span>
+          <table>
+            <tr><th>titulo</th><th>prioridade</th></tr>
+            <tr><td>Revisar slides de Engenharia de Software</td><td>ALTA</td></tr>
+            <tr><td>Enviar relatório semanal do estágio</td><td>ALTA</td></tr>
+            <tr><td>Montar o diagrama ER do projeto</td><td>ALTA</td></tr>
+            <tr><td>Fazer a lista 5 de Cálculo II</td><td>MEDIA</td></tr>
+            <tr><td style="color: var(--texto-suave)">… e depois as de prioridade BAIXA</td><td></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. CONSULTA 2 -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Consulta 2 · <span>ListaRepository.listarComPendentes</span></span>
+    <h2>Listas com a quantidade de pendentes</h2>
+    <div class="duas-colunas">
+      <pre class="sql">SELECT l.id,
+       l.nome,
+       l.cor,
+       ⟦COUNT(t.id) FILTER (WHERE t.concluida = FALSE)⟧
+         AS pendentes
+  FROM listas l
+  ⟦LEFT JOIN⟧ tarefas t ON t.lista_id = l.id
+ WHERE l.usuario_id = :usuarioId
+ ⟦GROUP BY l.id, l.nome, l.cor⟧
+ ORDER BY l.id</pre>
+      <div class="coluna">
+        <ul class="pontos pequenos">
+          <li><code>LEFT JOIN</code> → a lista aparece <strong>mesmo sem nenhuma tarefa</strong> (com 0). Com <code>INNER JOIN</code>, a lista "Casa" sumiria.</li>
+          <li><code>GROUP BY</code> → junta as linhas de cada lista para poder contar.</li>
+          <li><code>COUNT(...) FILTER (WHERE ...)</code> → conta <strong>só</strong> as não concluídas.</li>
+        </ul>
+        <div class="resultado">
+          <span class="resultado-titulo">Resultado com os dados de exemplo</span>
+          <table>
+            <tr><th>nome</th><th style="text-align: right">pendentes</th></tr>
+            <tr><td>Faculdade</td><td class="num">3</td></tr>
+            <tr><td>Pessoal</td><td class="num">1</td></tr>
+            <tr><td>Casa</td><td class="num">0</td></tr>
+            <tr><td>Estágio</td><td class="num">1</td></tr>
+          </table>
+        </div>
+        <div class="na-tela">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="3"/><path d="M8 21h8M12 17v4"/></svg>
+          Na tela: os números ao lado de "Minhas listas".
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. CONSULTA 3 -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Consulta 3 · <span>ResumoRepository.contar</span></span>
+    <h2>Cinco contadores em uma consulta só</h2>
+    <div class="duas-colunas">
+      <pre class="sql">SELECT COUNT(*) AS total,
+       ⟦COUNT(*) FILTER (WHERE concluida = TRUE)⟧
+         AS concluidas,
+       COUNT(*) FILTER (WHERE concluida = FALSE)
+         AS pendentes,
+       COUNT(*) FILTER (WHERE concluida = FALSE
+             AND data_entrega = CURRENT_DATE)
+         AS hoje,
+       COUNT(*) FILTER (WHERE concluida = FALSE
+             AND data_entrega BETWEEN CURRENT_DATE
+                              AND CURRENT_DATE + 7)
+         AS semana
+  FROM tarefas
+ WHERE usuario_id = :usuarioId</pre>
+      <div class="coluna">
+        <ul class="pontos pequenos">
+          <li>Em vez de 5 consultas separadas, <strong>uma passada</strong> na tabela calcula tudo.</li>
+          <li>Cada <code>FILTER</code> conta só as linhas que passam na sua condição.</li>
+          <li>É uma <strong>função de agregação</strong> (<code>COUNT</code>) com filtro — recurso do PostgreSQL.</li>
+        </ul>
+        <div class="resultado">
+          <span class="resultado-titulo">Resultado com os dados de exemplo</span>
+          <table>
+            <tr><th>total</th><th>concluidas</th><th>pendentes</th><th>hoje</th><th>semana</th></tr>
+            <tr><td class="num">8</td><td class="num">3</td><td class="num">5</td><td class="num">2</td><td class="num">5</td></tr>
+          </table>
+        </div>
+        <div class="na-tela">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="3"/><path d="M8 21h8M12 17v4"/></svg>
+          Na tela: "Seu progresso: 3 de 8" e os números de Hoje e Próximos 7 dias.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15. CONSULTA 4 -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Consulta 4 · <span>ResumoRepository.diasComTarefa</span></span>
+    <h2>Quais dias do mês têm tarefa</h2>
+    <div class="duas-colunas">
+      <pre class="sql">SELECT ⟦DISTINCT⟧
+       CAST(⟦EXTRACT(DAY FROM data_entrega)⟧
+            AS INTEGER) AS dia
+  FROM tarefas
+ WHERE usuario_id = :usuarioId
+   AND data_entrega >= :inicio  -- dia 1 do mês
+   AND data_entrega <  :fim     -- dia 1 do mês seguinte
+ ORDER BY dia</pre>
+      <div class="coluna">
+        <ul class="pontos pequenos">
+          <li><code>EXTRACT(DAY FROM data)</code> → pega só o número do dia (19 de <code>2026-11-19</code>).</li>
+          <li><code>DISTINCT</code> → tira os repetidos: duas tarefas no dia 19 viram um 19 só.</li>
+          <li><code>&gt;= início AND &lt; fim</code> → todas as datas do mês, sem precisar saber se ele tem 30 ou 31 dias.</li>
+        </ul>
+        <div class="resultado">
+          <span class="resultado-titulo">Exemplo de resultado</span>
+          <table>
+            <tr><th>dia</th></tr>
+            <tr><td>15 · 16 · 19 · 20 · 21 · 26</td></tr>
+          </table>
+        </div>
+        <div class="na-tela">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="3"/><path d="M8 21h8M12 17v4"/></svg>
+          Na tela: as bolinhas rosa embaixo dos dias do calendário.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16. CONSULTA 5 -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Consulta 5 · <span>ResumoRepository.proximasEntregas</span></span>
+    <h2>As 3 próximas entregas</h2>
+    <div class="duas-colunas">
+      <pre class="sql">SELECT t.id,
+       t.titulo,
+       ⟦TO_CHAR(t.data_entrega, 'YYYY-MM-DD')⟧
+         AS "dataEntrega",
+       t.prioridade,
+       l.nome AS "listaNome"
+  FROM tarefas t
+  ⟦LEFT JOIN listas l ON l.id = t.lista_id⟧
+ WHERE t.usuario_id = :usuarioId
+   AND t.concluida = FALSE
+   AND t.data_entrega >= CURRENT_DATE
+ ORDER BY t.data_entrega, t.id
+ ⟦LIMIT 3⟧</pre>
+      <div class="coluna">
+        <ul class="pontos pequenos">
+          <li><code>LEFT JOIN listas</code> → traz o <strong>nome da lista</strong> junto (ou nulo, se a tarefa não tiver lista).</li>
+          <li><code>ORDER BY data_entrega</code> + <code>LIMIT 3</code> → só as 3 que vencem primeiro.</li>
+          <li><code>TO_CHAR</code> → formata a data como texto.</li>
+        </ul>
+        <div class="resultado">
+          <span class="resultado-titulo">Resultado com os dados de exemplo</span>
+          <table>
+            <tr><th>titulo</th><th>entrega</th><th>listaNome</th></tr>
+            <tr><td>Revisar slides de Engenharia de Software</td><td>hoje</td><td>Faculdade</td></tr>
+            <tr><td>Enviar relatório semanal do estágio</td><td>hoje</td><td>Estágio</td></tr>
+            <tr><td>Fazer a lista 5 de Cálculo II</td><td>amanhã</td><td>Faculdade</td></tr>
+          </table>
+        </div>
+        <div class="na-tela">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="3"/><path d="M8 21h8M12 17v4"/></svg>
+          Na tela: o cartão "Próximas entregas".
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17. CONSULTA 6 -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Consulta 6 · <span>ResumoRepository.notificacoes</span></span>
+    <h2>Notificações do sino com CASE WHEN</h2>
+    <div class="duas-colunas">
+      <pre class="sql">SELECT t.id,
+       t.titulo,
+       ⟦CASE
+           WHEN t.data_entrega &lt; CURRENT_DATE
+                THEN 'ATRASADA'
+           WHEN t.data_entrega = CURRENT_DATE
+                THEN 'HOJE'
+           ELSE 'LEMBRETE'
+       END AS tipo⟧
+  FROM tarefas t
+ WHERE t.usuario_id = :usuarioId
+   AND t.concluida = FALSE
+   AND (    t.data_entrega &lt;= CURRENT_DATE
+         ⟦OR (t.lembrete = TRUE
+             AND t.data_entrega = CURRENT_DATE + 1)⟧ )
+ ORDER BY t.data_entrega, t.id</pre>
+      <div class="coluna">
+        <ul class="pontos pequenos">
+          <li><code>CASE WHEN ... THEN ... END</code> → é um <strong>"se"</strong> dentro do SQL: cria a coluna <code>tipo</code> conforme a data.</li>
+          <li>O <code>OR</code> junta dois grupos: o que já venceu ou vence hoje, <strong>ou</strong> o que tem "Me lembrar" ligado e vence amanhã.</li>
+        </ul>
+        <div class="resultado">
+          <span class="resultado-titulo">Resultado com os dados de exemplo</span>
+          <table>
+            <tr><th>titulo</th><th>tipo</th></tr>
+            <tr><td>Revisar slides de Engenharia de Software</td><td>HOJE</td></tr>
+            <tr><td>Enviar relatório semanal do estágio</td><td>HOJE</td></tr>
+            <tr><td>Fazer a lista 5 de Cálculo II</td><td>LEMBRETE</td></tr>
+          </table>
+        </div>
+        <div class="na-tela">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="3"/><path d="M8 21h8M12 17v4"/></svg>
+          Na tela: a caixinha que abre ao clicar no sino 🔔.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18. CONSULTAS AUTOMÁTICAS + SEGURANÇA -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Consultas · Spring Data</span>
+    <h2>SQL gerado pelo nome do método</h2>
+    <div class="duas-colunas iguais">
+      <table>
+        <tr><th>Método no Repository</th><th>SQL gerado</th></tr>
+        <tr><td><code>findByEmailIgnoreCase(email)</code></td><td style="font-size: 1.05cqw">SELECT * FROM usuarios WHERE LOWER(email) = LOWER(?)</td></tr>
+        <tr><td><code>existsByEmailIgnoreCase(email)</code></td><td style="font-size: 1.05cqw">SELECT COUNT(*) &gt; 0 FROM usuarios WHERE ...</td></tr>
+        <tr><td><code>findByIdAndUsuarioId(id, u)</code></td><td style="font-size: 1.05cqw">SELECT * FROM tarefas WHERE id = ? AND usuario_id = ?</td></tr>
+        <tr><td><code>countByUsuarioId(u)</code></td><td style="font-size: 1.05cqw">SELECT COUNT(*) FROM listas WHERE usuario_id = ?</td></tr>
+        <tr><td><code>save(objeto)</code></td><td style="font-size: 1.05cqw">INSERT (novo) ou UPDATE (já existe)</td></tr>
+        <tr><td><code>delete(objeto)</code></td><td style="font-size: 1.05cqw">DELETE FROM ... WHERE id = ?</td></tr>
+      </table>
+      <div class="coluna">
+        <div class="cartao menta">
+          <h3>Segurança dos dados</h3>
+          <ul>
+            <li><strong>Todo SQL</strong> filtra por <code>usuario_id</code>: ninguém vê a tarefa do outro.</li>
+            <li><strong>Parâmetros</strong> (<code>:usuarioId</code>, <code>?</code>) evitam SQL injection.</li>
+            <li>A senha é salva como <strong>hash BCrypt</strong>, nunca em texto.</li>
+          </ul>
+        </div>
+        <div class="cartao lavanda">
+          <h3>Ver o SQL de verdade</h3>
+          <p>Com <code>spring.jpa.show-sql=true</code>, todo SQL executado aparece no log da API.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 19. DEMONSTRAÇÃO -->
+<section class="slide">
+  <div class="quadro">
+    <span class="etiqueta">Demonstração</span>
+    <h2>Vamos ver funcionando</h2>
+    <div class="grade-3" style="flex: 1">
+      <div class="cartao rosa">
+        <div class="icone">1</div>
+        <h3>O app</h3>
+        <p><code>localhost:4200</code></p>
+        <p>Cadastro e login · criar, editar, concluir e excluir tarefas · listas · filtros, busca, ordenação, calendário e sino.</p>
+      </div>
+      <div class="cartao menta">
+        <div class="icone">2</div>
+        <h3>O banco (Adminer)</h3>
+        <p><code>localhost:8081</code></p>
+        <p>As 4 tabelas, a senha em hash e as consultas rodando em "Comando SQL".</p>
+      </div>
+      <div class="cartao lavanda">
+        <div class="icone">3</div>
+        <h3>A API (Swagger)</h3>
+        <p><code>localhost:8080/swagger-ui.html</code></p>
+        <p>Todos os endpoints do CRUD, testáveis pelo navegador.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 20. FIM -->
+<section class="slide">
+  <div class="quadro capa">
+    <svg class="flor" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6.2" r="3.6" fill="#FFFFFF"/><circle cx="17.5" cy="10.2" r="3.6" fill="#FFFFFF"/><circle cx="15.4" cy="16.6" r="3.6" fill="#FFFFFF"/><circle cx="8.6" cy="16.6" r="3.6" fill="#FFFFFF"/><circle cx="6.5" cy="10.2" r="3.6" fill="#FFFFFF"/><circle cx="12" cy="12" r="3" fill="#FFD7E4"/></svg>
+    <span class="etiqueta" style="background: #FFFFFF">Para fechar</span>
+    <h1 style="font-size: 5cqw; margin-top: 1cqw">Obrigada! 🌸</h1>
+    <ul class="pontos" style="margin-top: 1.6cqw; max-width: 58cqw">
+      <li><strong>CRUD completo</strong> em usuários, listas, tarefas e subtarefas.</li>
+      <li><strong>6 consultas SQL</strong> com <code>JOIN</code>, <code>GROUP BY</code>, <code>COUNT FILTER</code>, <code>CASE</code>, <code>EXTRACT</code>, <code>ILIKE</code> e <code>LIMIT</code>.</li>
+      <li>Regras garantidas pelo próprio banco: chaves, <code>CHECK</code>, <code>UNIQUE</code> e <code>CASCADE</code>.</li>
+      <li>Tudo rodando no <strong>Docker</strong> com um clique.</li>
+    </ul>
+    <p class="autoria">Perguntas?</p>
+  </div>
+</section>
+
+<p class="ajuda" id="ajuda">Use <kbd>←</kbd> <kbd>→</kbd> para passar os slides · <kbd>F</kbd> tela cheia</p>
+
+<script>
+  // ============================================================
+  //  1. Colore o SQL dos slides (palavras-chave, textos, parâmetros...)
+  //     Os trechos entre ⟦ ⟧ ganham um destaque rosa.
+  // ============================================================
+  const PALAVRAS = 'SELECT FROM WHERE AND OR NOT IN IS NULL AS ON LEFT JOIN GROUP BY ORDER LIMIT DISTINCT CASE WHEN THEN ELSE END BETWEEN ILIKE FILTER DESC ASC NULLS LAST CREATE TABLE INDEX PRIMARY KEY REFERENCES DELETE CASCADE SET DEFAULT CHECK ALTER ADD COLUMN INSERT INTO VALUES UPDATE TRUE FALSE BIGSERIAL BIGINT VARCHAR TEXT DATE BOOLEAN TIMESTAMP INTEGER UNIQUE CURRENT_DATE'.split(' ');
+  const FUNCOES = ['COUNT', 'CAST', 'EXTRACT', 'TO_CHAR', 'LOWER', 'NOW', 'DAY'];
+  const escapar = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  document.querySelectorAll('pre.sql').forEach((bloco) => {
+    const texto = bloco.textContent;
+    const partes = /(--[^\n]*)|('[^']*')|("[^"]*")|(:[a-zA-Z_]+)|(\b\d+\b)|([A-Za-z_][A-Za-z_0-9]*)|(⟦|⟧)|([\s\S])/g;
+    let html = '', m, destacando = false, reabrir = false;
+    while ((m = partes.exec(texto))) {
+      const [trecho, comentario, string, aspas, parametro, numero, palavra, marca] = m;
+      // Destaque em várias linhas: fecha no fim da linha e reabre depois do recuo
+      if (destacando && trecho === '\n') { html += '</span>\n'; reabrir = true; continue; }
+      if (reabrir && trecho === ' ') { html += ' '; continue; }
+      if (reabrir && marca !== '⟧') { html += '<span class="d">'; }
+      if (reabrir && marca === '⟧') { reabrir = false; destacando = false; continue; }
+      reabrir = false;
+      if (marca) destacando = marca === '⟦';
+      if (comentario) html += `<span class="c">${escapar(comentario)}</span>`;
+      else if (string) html += `<span class="s">${escapar(string)}</span>`;
+      else if (aspas) html += escapar(aspas);
+      else if (parametro) html += `<span class="p">${parametro}</span>`;
+      else if (numero) html += `<span class="n">${numero}</span>`;
+      else if (palavra && PALAVRAS.includes(palavra)) html += `<span class="k">${palavra}</span>`;
+      else if (palavra && FUNCOES.includes(palavra)) html += `<span class="f">${palavra}</span>`;
+      else if (marca) html += marca === '⟦' ? '<span class="d">' : '</span>';
+      else html += escapar(trecho);
+    }
+    bloco.innerHTML = html;
+  });
+
+  // ============================================================
+  //  2. Número do slide e logo no rodapé de cada slide
+  // ============================================================
+  const slides = [...document.querySelectorAll('.slide')];
+  slides.forEach((slide, i) => {
+    const quadro = slide.querySelector('.quadro');
+    if (i > 0) {
+      quadro.insertAdjacentHTML('beforeend',
+        '<span class="marca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/><path d="M9.2 11.2l2 2 3.6-3.6"/></svg>Tarefinhas</span>' +
+        `<span class="numero">${i + 1} / ${slides.length}</span>`);
+    }
+  });
+
+  // ============================================================
+  //  3. Teclado: ← → passam os slides, F liga a tela cheia
+  // ============================================================
+  function slideAtual() {
+    return Math.round(window.scrollY / window.innerHeight);
+  }
+  function irPara(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    slides[i].scrollIntoView({ behavior: 'smooth' });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); irPara(slideAtual() + 1); }
+    if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); irPara(slideAtual() - 1); }
+    if (e.key === 'Home') irPara(0);
+    if (e.key === 'End') irPara(slides.length - 1);
+    if (e.key === 'f' || e.key === 'F') {
+      document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+    }
+  });
+  // A dica de navegação some depois de alguns segundos
+  setTimeout(() => document.getElementById('ajuda').classList.add('escondida'), 5000);
+</script>
+</body>
+</html>

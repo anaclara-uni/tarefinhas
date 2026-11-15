@@ -1,0 +1,65 @@
+// Menu lateral (valores do design ref/paginas/tarefas.html)
+
+:host { display: contents; }
+
+.barra {
+  flex: 1 1 248px;
+  padding: 28px 20px;
+  background: #FFFFFF;
+  border-right: 1.5px solid var(--borda-suave);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.marca { display: flex; align-items: center; gap: 12px; padding: 0 8px; }
+.marca-icone {
+  width: 44px; height: 44px; border-radius: 14px; background: var(--rosa-100);
+  display: flex; align-items: center; justify-content: center; color: var(--rosa-500);
+}
+.marca-nome { font-family: var(--fonte-titulo); font-size: 24px; font-weight: 600; color: var(--texto); }
+
+.botao-nova {
+  display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px;
+  border-radius: 16px; background: var(--rosa-500); color: #FFFFFF; text-decoration: none;
+  font-weight: 800; font-size: 15px; box-shadow: 0 8px 20px rgba(201, 53, 106, .22);
+  &:hover { color: #FFFFFF; }
+}
+
+.grupo { display: flex; flex-direction: column; gap: 4px; }
+
+.item {
+  display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border: 0;
+  border-radius: 14px; background: transparent; color: var(--texto); font-size: 15px;
+  font-weight: 700; cursor: pointer; text-align: left; width: 100%;
+
+  &.ativo { background: var(--rosa-100); color: var(--rosa-700); font-weight: 800; }
+  &.ativo .contagem { color: inherit; background: #FFFFFF; border-radius: 999px; padding: 2px 9px; }
+}
+.item-nome { flex: 1; }
+.contagem { font-size: 13px; color: var(--texto-suave); }
+
+.espaco { flex: 1; }
+
+.dica {
+  background: var(--lavanda-100); border-radius: 20px; padding: 16px 18px; border: 0;
+  display: flex; flex-direction: column; gap: 6px; color: var(--lavanda-700);
+  text-align: left; cursor: pointer;
+  &:hover { background: #E6DEFF; }
+}
+.dica-texto { font-size: 14px; line-height: 1.45; }
+.dica-titulo { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 14px; }
+
+.usuario { display: flex; align-items: center; gap: 12px; padding: 0 4px; }
+.avatar {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--pessego-100); color: var(--pessego-700);
+  display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; flex: none;
+}
+.usuario-dados { flex: 1; min-width: 0; }
+.usuario-nome { margin: 0; font-weight: 800; font-size: 15px; }
+.usuario-papel { margin: 0; font-size: 13px; color: var(--texto-suave); }
+.botao-config {
+  flex: none; width: 44px; height: 44px; border: 0; border-radius: 14px; background: transparent; color: var(--texto-suave);
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  &:hover { background: var(--fundo); color: var(--texto-suave); }
+}

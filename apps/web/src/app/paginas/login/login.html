@@ -1,0 +1,105 @@
+<div class="pagina">
+
+  <!-- Lado esquerdo: boas-vindas com as tarefinhas de enfeite -->
+  <section class="boas-vindas" aria-label="Boas-vindas">
+    <svg class="flor-fundo" width="220" height="220" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6.2" r="3.6" fill="#FFFFFF"></circle><circle cx="17.5" cy="10.2" r="3.6" fill="#FFFFFF"></circle><circle cx="15.4" cy="16.6" r="3.6" fill="#FFFFFF"></circle><circle cx="8.6" cy="16.6" r="3.6" fill="#FFFFFF"></circle><circle cx="6.5" cy="10.2" r="3.6" fill="#FFFFFF"></circle><circle cx="12" cy="12" r="3" fill="#FFD7E4"></circle></svg>
+    <svg class="brilho brilho-1" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"></path></svg>
+    <svg class="brilho brilho-2" width="18" height="18" viewBox="0 0 24 24" fill="#E8A3BB" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"></path></svg>
+
+    <div class="marca">
+      <div class="marca-icone">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"></path><path d="M9.2 11.2l2 2 3.6-3.6"></path></svg>
+      </div>
+      <span class="marca-nome">Tarefinhas</span>
+    </div>
+
+    <div class="chamada">
+      <h1>Suas tarefas, organizadas com carinho.</h1>
+      <p>Anote trabalhos, provas e compromissos num só lugar e acompanhe cada conquista do dia.</p>
+    </div>
+
+    <div class="exemplos">
+      <div class="exemplo exemplo-1">
+        <span class="check-feito"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+        <span class="exemplo-texto riscado">Estudar para a prova</span>
+        <span class="etiqueta etiqueta-feito">Feito</span>
+      </div>
+      <div class="exemplo exemplo-2">
+        <span class="check-vazio"></span>
+        <span class="exemplo-texto">Entregar o trabalho em grupo</span>
+        <span class="etiqueta etiqueta-hoje">Hoje</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lado direito: formulário -->
+  <section class="lado-form" aria-label="Entrar">
+    <div class="caixa">
+      <div class="abas">
+        <button type="button" [class.ativa]="modo() === 'entrar'" [attr.aria-pressed]="modo() === 'entrar'" (click)="trocarModo('entrar')">Entrar</button>
+        <button type="button" [class.ativa]="modo() === 'cadastrar'" [attr.aria-pressed]="modo() === 'cadastrar'" (click)="trocarModo('cadastrar')">Criar conta</button>
+      </div>
+
+      <div>
+        @if (modo() === 'entrar') {
+          <h2>Que bom te ver de novo!</h2>
+          <p class="subtitulo">Entre para continuar de onde você parou.</p>
+        } @else {
+          <h2>Vamos começar!</h2>
+          <p class="subtitulo">Crie sua conta em menos de um minuto.</p>
+        }
+      </div>
+
+      <form (ngSubmit)="enviar()">
+        @if (modo() === 'cadastrar') {
+          <div class="grupo">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" class="campo" placeholder="Como quer ser chamada?" [(ngModel)]="nome" autocomplete="name">
+          </div>
+        }
+
+        <div class="grupo">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" class="campo" placeholder="voce@email.com" [(ngModel)]="email" autocomplete="email">
+        </div>
+
+        <div class="grupo">
+          <div class="linha-label">
+            <label for="senha">Senha</label>
+            @if (modo() === 'entrar') {
+              <a href="#" (click)="$event.preventDefault()">Esqueci minha senha</a>
+            }
+          </div>
+          <div class="campo campo-senha">
+            <input id="senha" name="senha" [type]="mostrarSenha() ? 'text' : 'password'" placeholder="Sua senha" [(ngModel)]="senha"
+                   [autocomplete]="modo() === 'entrar' ? 'current-password' : 'new-password'">
+            <button type="button" [attr.aria-label]="mostrarSenha() ? 'Esconder senha' : 'Mostrar senha'" (click)="mostrarSenha.set(!mostrarSenha())">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+        </div>
+
+        @if (modo() === 'entrar') {
+          <label class="lembrar">
+            <input type="checkbox" name="lembrar" [(ngModel)]="lembrar">
+            Lembrar de mim
+          </label>
+        }
+
+        @if (erro()) {
+          <p class="erro" role="alert">{{ erro() }}</p>
+        }
+
+        <button type="submit" class="botao-principal" [disabled]="enviando()">
+          {{ modo() === 'entrar' ? 'Entrar' : 'Criar conta' }}
+        </button>
+      </form>
+
+      @if (modo() === 'entrar') {
+        <p class="rodape">Ainda não tem conta? <a href="#" (click)="$event.preventDefault(); trocarModo('cadastrar')">Criar conta grátis</a></p>
+      } @else {
+        <p class="rodape">Já tem conta? <a href="#" (click)="$event.preventDefault(); trocarModo('entrar')">Entrar</a></p>
+      }
+    </div>
+  </section>
+</div>

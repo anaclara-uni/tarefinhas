@@ -1,0 +1,108 @@
+<div class="fundo">
+  <div class="janela" role="dialog" aria-modal="true" aria-labelledby="titulo-modal">
+    <div class="topo">
+      <div class="topo-icone">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"></path></svg>
+      </div>
+      <div class="topo-textos">
+        <h1 id="titulo-modal">{{ id() ? 'Editar tarefa' : 'Nova tarefa' }}</h1>
+        <p>Anote tudo o que precisa e escolha quando entregar.</p>
+      </div>
+      <a routerLink="/tarefas" class="fechar" aria-label="Fechar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </a>
+    </div>
+
+    <form (ngSubmit)="salvar()">
+      <div class="grupo">
+        <label for="titulo">Título</label>
+        <input id="titulo" name="titulo" class="campo campo-titulo" placeholder="O que você precisa fazer?" [(ngModel)]="titulo" appAutofoco>
+      </div>
+
+      <div class="grupo">
+        <label for="descricao">Descrição <span class="opcional">(opcional)</span></label>
+        <textarea id="descricao" name="descricao" class="campo campo-descricao" rows="3" placeholder="Detalhes, links, observações..." [(ngModel)]="descricao"></textarea>
+      </div>
+
+      <div class="duas-colunas">
+        <div class="grupo">
+          <label for="data">Data de entrega</label>
+          <input id="data" name="data" type="date" class="campo campo-menor" [(ngModel)]="dataEntrega">
+        </div>
+        <div class="grupo">
+          <label for="lista">Lista</label>
+          <select id="lista" name="lista" class="campo campo-menor" [(ngModel)]="listaId">
+            @for (l of listas(); track l.id) {
+              <option [ngValue]="l.id">{{ l.nome }}</option>
+            }
+            <option [ngValue]="null">Sem lista</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset class="prioridade">
+        <legend>Prioridade</legend>
+        <div class="opcoes">
+          @for (p of prioridades; track p.valor) {
+            <label class="opcao" [style.background]="p.fundo" [style.color]="p.texto"
+                   [style.border-color]="prioridade() === p.valor ? p.destaque : 'transparent'">
+              <input type="radio" name="prioridade" [value]="p.valor" [(ngModel)]="prioridade" [style.accent-color]="p.destaque">
+              {{ p.nome }}
+            </label>
+          }
+        </div>
+      </fieldset>
+
+      <div class="subtarefas">
+        <p class="subtarefas-titulo">Subtarefas</p>
+        @for (s of subtarefas(); track $index; let i = $index) {
+          <div class="subtarefa" [class.feita]="s.concluida">
+            <label>
+              <input type="checkbox" [checked]="s.concluida" (change)="marcarSubtarefa(i)">
+              {{ s.titulo }}
+            </label>
+            <button type="button" class="remover" [attr.aria-label]="'Remover subtarefa ' + s.titulo" (click)="removerSubtarefa(i)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+            </button>
+          </div>
+        }
+        @if (adicionandoSubtarefa()) {
+          <div class="subtarefa">
+            <input class="nova-subtarefa" name="novaSubtarefa" placeholder="Escreva e aperte Enter" aria-label="Nova subtarefa"
+                   [(ngModel)]="textoSubtarefa" appAutofoco
+                   (keydown.enter)="$event.preventDefault(); adicionarSubtarefa()" (blur)="adicionarSubtarefa()"
+                   (keydown.escape)="adicionandoSubtarefa.set(false)">
+          </div>
+        }
+        <button type="button" class="botao-subtarefa" (click)="adicionandoSubtarefa.set(true)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+          Adicionar subtarefa
+        </button>
+      </div>
+
+      <label class="lembrete">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"></path><path d="M10 21h4"></path></svg>
+        <span class="lembrete-textos">
+          <span class="lembrete-titulo">Me lembrar</span>
+          <span class="lembrete-sub">1 dia antes, às 9h</span>
+        </span>
+        <input type="checkbox" role="switch" name="lembrete" aria-label="Ativar lembrete" [(ngModel)]="lembrete">
+      </label>
+
+      @if (erro()) {
+        <p class="erro" role="alert">{{ erro() }}</p>
+      }
+
+      <div class="botoes">
+        @if (id()) {
+          <button type="button" class="botao-excluir" (click)="excluir()">Excluir</button>
+        }
+        <a routerLink="/tarefas" class="botao-cancelar">Cancelar</a>
+        <button type="submit" class="botao-salvar" [disabled]="salvando()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+          Salvar tarefa
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

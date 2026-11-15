@@ -1,0 +1,43 @@
+<div class="grupo" [class.acoes-visiveis]="acoesSempreVisiveis()">
+  <p class="titulo-grupo">Minhas listas</p>
+
+  @for (lista of listas(); track lista.id) {
+    @if (editandoId() === lista.id) {
+      <div class="item item-editando">
+        <span class="bolinha" [style.background]="lista.cor"></span>
+        <input class="input-lista" aria-label="Novo nome da lista" [(ngModel)]="nomeEdicao" appAutofoco
+               (keydown.enter)="salvarEdicao(lista)" (keydown.escape)="editandoId.set(null)" (blur)="salvarEdicao(lista)">
+      </div>
+    } @else {
+      <div class="item-lista">
+        <button type="button" class="item" [class.ativo]="listaId() === lista.id" [attr.aria-pressed]="listaId() === lista.id" (click)="escolherLista.emit(lista.id)">
+          <span class="bolinha" [style.background]="lista.cor"></span>
+          <span class="item-nome">{{ lista.nome }}</span>
+          <span class="contagem">{{ lista.pendentes }}</span>
+        </button>
+        <!-- No computador aparecem quando o mouse passa por cima -->
+        <div class="acoes-lista">
+          <button type="button" [attr.aria-label]="'Renomear lista ' + lista.nome" title="Renomear" (click)="comecarEdicao(lista)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg>
+          </button>
+          <button type="button" [attr.aria-label]="'Excluir lista ' + lista.nome" title="Excluir" (click)="excluir(lista)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13M10 11v5M14 11v5"></path></svg>
+          </button>
+        </div>
+      </div>
+    }
+  }
+
+  @if (criandoLista()) {
+    <div class="item item-editando">
+      <span class="bolinha bolinha-nova"></span>
+      <input class="input-lista" aria-label="Nome da nova lista" placeholder="Nome da lista" [(ngModel)]="nomeNovaLista" appAutofoco
+             (keydown.enter)="salvarNovaLista()" (keydown.escape)="criandoLista.set(false)" (blur)="salvarNovaLista()">
+    </div>
+  } @else {
+    <button type="button" class="item item-nova-lista" (click)="criandoLista.set(true)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+      Nova lista
+    </button>
+  }
+</div>

@@ -1,0 +1,18 @@
+<div class="cartao">
+  <p class="titulo">Próximas entregas</p>
+
+  @for (e of entregas(); track e.id; let i = $index) {
+    <a class="entrega" [routerLink]="['/tarefas', e.id, 'editar']">
+      <div class="data" [style.background]="cores[i % 3].fundo" [style.color]="cores[i % 3].texto">
+        <span class="data-dia">{{ dia(e.dataEntrega) }}</span>
+        <span class="data-mes">{{ mes(e.dataEntrega) }}</span>
+      </div>
+      <div class="info">
+        <p class="info-titulo">{{ e.titulo }}</p>
+        <p class="info-sub">{{ e.listaNome ?? 'Sem lista' }} · Prioridade {{ prioridade(e.prioridade) }}</p>
+      </div>
+    </a>
+  } @empty {
+    <p class="vazio">Nenhuma entrega pendente. Aproveite!</p>
+  }
+</div>

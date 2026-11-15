@@ -1,0 +1,41 @@
+// Linha de tarefa (valores do design ref/paginas/tarefas.html)
+
+.linha {
+  display: flex; align-items: center; gap: 8px; padding: 8px 10px 8px 4px;
+  border-radius: 18px; background: transparent;
+  &.feita { background: #FFFAF9; }
+}
+
+.botao-check {
+  width: 44px; height: 44px; flex: none; border: 0; background: transparent; padding: 0;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.check {
+  width: 26px; height: 26px; border-radius: 50%; border: 2px solid #E8B4C6; background: #FFFFFF;
+  display: flex; align-items: center; justify-content: center; color: #FFFFFF;
+  .feita & { border-color: var(--rosa-500); background: var(--rosa-500); }
+}
+
+.conteudo { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; padding: 4px 0; }
+
+.titulo {
+  margin: 0; font-size: 16px; font-weight: 700; color: var(--texto); text-decoration: none;
+  &:hover { color: var(--rosa-700); }
+  .feita & { color: var(--texto-suave); text-decoration: line-through; text-decoration-color: #E8A3BB; }
+}
+
+.detalhes {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+  font-size: 13px; font-weight: 700; color: var(--texto-suave);
+}
+.detalhe { display: flex; align-items: center; gap: 6px; }
+.data { gap: 5px; &.hoje { color: var(--rosa-700); } }
+.bolinha { width: 8px; height: 8px; border-radius: 50%; }
+.etiqueta { padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; }
+
+.botao-icone {
+  width: 44px; height: 44px; flex: none; border: 0; border-radius: 14px; background: transparent;
+  color: var(--texto-apagado); display: flex; align-items: center; justify-content: center; cursor: pointer;
+  &:hover { background: var(--fundo); }
+  &.favorita { color: #E0A100; }
+}
